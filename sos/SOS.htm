@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SOS</title>
+        <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Black_book_icon.svg/1200px-Black_book_icon.svg.png"/>
+        <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700;&display=swap');</style>
+        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="sos.css">
+        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    </head>
+    <body>
+        <noscript>ATTENTION! Your browser has JavaScript disabled. To ensure this program works as intended, enable JavaScript in your browser settings.</noscript>
+        <p id="errormessages"></p>
+        <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Black_book_icon.svg/1200px-Black_book_icon.svg.png" type="image/x-icon">
+        <!--<div class='logoctnr'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Black_book_icon.svg/1200px-Black_book_icon.svg.png" width="50px" height="50px" class="logo"><br></div>-->
+        
+        <br>
+        <div class="redirects">
+            <div class="redirectsSpace" style="overflow: hidden;"> <!--a wrapper and also kinda styling-->
+                <h1>Redirects</h1>
+                <div class="spacer"></div>
+                <div style="float:left;">
+                    <p>Main sites</p>
+                    <button class='mainlinkbtns' id='mainlinks' onclick='offsiteredirect("schoology")'>Schoology</button> <button class='mainlinkbtns' id='mainlinks' onclick='offsiteredirect("classlink")'>Classlink</button>    
+                    <br>
+                    <p>Quiz alternatives and studying</p>
+                    <button class='mainlinkbtns' id='quizalt' onclick='offsiteredirect("kahoot")'>Kahoot</button> <button class='mainlinkbtns' id='quizalt' onclick='offsiteredirect("latest")'>Quizlet</button>
+
+                    <br>
+                    <p>Search Engines</p>
+                    <button class='mainlinkbtns' id="sengines" onclick='offsiteredirect("scholar")'>Google Scholar</button> <button class='mainlinkbtns' id='sengines' onclick='offsiteredirect("patents")'>Google Patents</button>
+                        
+                    <br>
+                    <label>GSuite</label><br>
+                    <button id="gste" onclick='offsiteredirect("docs")'>Docs</button> <button id="gste" onclick='offsiteredirect("slides")'>Slides</button> <button id="gste" onclick="offsiteredirect('sheets')">Sheets</button> <button id="gste" onclick="offsiteredirect('keep')">Keep</button><br>
+                    <div class="spacer">a</div>
+                    <button id="gste" onclick="offsiteredirect('drv')">Drive</button> <button id="gste" onclick='offsiteredirect("clndr")'>Calendar</button> <button id="gste" onclick='offsiteredirect("gml")'>Gmail</button> <button id="gste" onclick="offsiteredirect('frms')">Forms</button>
+                    <br>
+
+                </div> 
+                <div style="color: #0000; width: .5%; float: left;">a</div>
+                <div style="float: left;">
+                    <p>Templates (WIP)</p>
+                    <button id="tmplt" onclick="offsiteredirect('template')">Essay Templates</button>
+                    <br>
+
+                    <p>Break Games</p>
+                    <button id="bgame" onclick="offsiteredirect('chkrs')">Checkers</button> <button id="bgame" onclick="offsiteredirect('wrdl')">Wordle</button> <button id="bgame" onclick="offsiteredirect('ttt')">TicTacToe</button>
+                </div>
+            </div>
+        </div>
+        
+        <!--<p id="grdout"></p>-->
+
+        <div id="snackbar"><p id='snackbartxt'></p></div>
+        
+        <br>
+        <script>
+            function detecterrors() {
+                var out = document.getElementById('errormessages').innerHTML;
+                var ret;
+                if (navigator.onLine == false) { ret = 'Your computer is not connected to the internet. To ensure this program functions as intended, please re-enable your internet.';
+                } else { out.remove(); }
+            }
+
+            function offsiteredirect(site) {
+                //SCHOOL OWNED
+                if (navigator.onLine == false) {
+                    snackbar('Your computer is offline. Please reconnect your computer to the internet to use this.');
+                    site = 'noInternet'
+                }
+                if (site == 'schoology') { window.location.href = 'https://cpsk12.schoology.com/home';
+                    } else if (site == 'classlink') { window.location.href = 'https://myapps.classlink.com/home';
+                    //EDU GAMES
+                    } else if (site == 'kahoot') { window.location.href = 'https://kahoot.it';
+                    } else if (site == 'quizlet') { window.location.href = 'https://quizlet.com/latest';
+                    //ENGINES
+                    } else if (site == 'scholar') { window.location.href ='https://scholar.google.com';
+                    } else if (site == 'patents') { window.location.href = 'https://patents.google.com';                
+                    //GSUITE
+                    } else if (site == 'docs') { window.location.href = 'https://docs.google.com';
+                    } else if (site == 'slides') { window.location.href = 'https://slides.google.com';
+                    } else if (site == 'sheets') { window.location.href = 'https://sheets.google.com';
+                    } else if (site == 'keep') { window.location.href = 'https://keep.google.com';
+                    } else if (site == 'drive') { window.location.href = 'https://drive.google.com';
+                    } else if (site == 'clndr') { window.location.href = 'https://calendar.google.com';
+                    } else if (site == 'frms') { window.location.href = 'https://forms.google.com';
+                    } else if (site == 'gml') { window.location.href = 'https://gmail.com';                    
+                    //BRAIN GAMES
+                    } else if (site == 'chkrs') { window.location.href = 'https://www.coolmathgames.com/0-checkers';
+                    } else if (site == 'wrdl') { window.location.href = 'https://www.nytimes.com/games/wordle/index.html';
+                    } else if (site == 'ttt') { window.location.href = 'https://playtictactoe.org/';
+                    //TEMPLATES
+                    } else if (site == 'tmplts') { window.location.href = 'https://docs.google.com/document/d/1CH0Uh2TsQqr5LcLFR4uztQuNeuQuzSmXtJsChvHJU_0/edit?usp=sharing'; }
+                    
+                //CALCULATORS
+            }
+
+            function filter(str, filt) {
+                var re = /[${filt}]+/g;
+                return (str.match(re) || []).join('');
+            }
+        </script>
+    </body>
+</html>
